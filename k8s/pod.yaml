@@ -1,0 +1,87 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: web
+  name: web
+spec:
+  initContainers:
+    - name: copy-cm-to-conf
+      image: busybox:1.31.1
+      imagePullPolicy: IfNotPresent
+      command: ["/bin/sh", "-c", "cp /bitnami/tomcat/conf/* /tmp/conf/"]
+      volumeMounts:
+        - name: tmp-conf
+          mountPath: /tmp/conf/          
+        - name: tomcat-conf-volume 
+          mountPath: /bitnami/tomcat/conf      
+  containers:
+    - name: web
+      image: andriykalashnykov/tomcat9-root-war:1.0
+      imagePullPolicy: Always
+      env:
+        - name: JAVA_OPTS
+          value: "-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addressess=true -Dfile.encoding=UTF-8 -Djava.awt.headless=true -XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MinRAMPercentage=50.0 -XX:MaxRAMPercentage=90.0"
+        - name: TOMCAT_USERNAME
+          value: "admin"
+        - name: TOMCAT_PASSWORD
+          value: "admin"
+        - name : TOMCAT_AJP_PORT_NUMBER
+          value: "8019"    
+        - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT
+          value: "1"
+        - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT_ANY_IP
+          value: "1"  
+      readinessProbe:
+        httpGet:
+          scheme: HTTP
+          path: / 
+          port: http-8080
+        initialDelaySeconds: 20
+        periodSeconds: 5 
+        successThreshold: 1 
+        failureThreshold: 20
+        timeoutSeconds: 2
+      livenessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /
+            port: http-8080
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 5
+          failureThreshold: 20
+      ports:   
+      - name: http-8080
+        containerPort: 8080
+      - name: https-8443
+        containerPort: 8443  
+      resources:
+        requests:
+          memory: "256Mi"
+          cpu: "550m"
+        limits:
+          memory: "256Mi"
+          cpu: "750m"
+      volumeMounts:
+        - name: data
+          mountPath: /bitnami/tomcat
+        - name: tmp-conf
+          mountPath: /tmp/conf/  
+      securityContext:
+        privileged: true
+      lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "cp /tmp/conf/* /opt/bitnami/tomcat/conf"]
+  imagePullSecrets:
+  - name: registry-secret
+  volumes:
+    - name: data
+      emptyDir: {}
+    - name: tmp-conf
+      emptyDir: {}  
+    - name: tomcat-conf-volume
+      configMap:
+        name: tomcat-conf-cm
+ 
