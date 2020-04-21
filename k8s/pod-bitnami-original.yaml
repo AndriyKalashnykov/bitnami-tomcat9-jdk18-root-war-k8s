@@ -16,9 +16,7 @@ spec:
         - name: TOMCAT_USERNAME
           value: "admin"
         - name: TOMCAT_PASSWORD
-          value: "admin"
-        - name : TOMCAT_AJP_PORT_NUMBER
-          value: "8019"    
+          value: "admin"  
         - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT
           value: "1"
         - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT_ANY_IP

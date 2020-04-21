@@ -12,6 +12,14 @@ spec:
       env:
         - name: JAVA_OPTS
           value: "-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addressess=true -Dfile.encoding=UTF-8 -Djava.awt.headless=true -XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MinRAMPercentage=50.0 -XX:MaxRAMPercentage=90.0"
+        - name: TOMCAT_USERNAME
+          value: "admin"
+        - name: TOMCAT_PASSWORD
+          value: "admin"    
+        - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT
+          value: "1"       
+        - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT_ANY_IP
+          value: "1"           
       readinessProbe:
         httpGet:
           scheme: HTTPS
@@ -46,7 +54,7 @@ spec:
       lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "cp /cm/conf/* /opt/bitnami/tomcat/conf"]
+              command: ["/bin/sh", "-c", "cp cm/conf/* opt/bitnami/tomcat/conf"]
   volumes:
     - name: tomcat-conf-volume
       configMap:

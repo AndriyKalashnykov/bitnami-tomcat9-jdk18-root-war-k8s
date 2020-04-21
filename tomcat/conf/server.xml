@@ -173,5 +173,5 @@
       </Host>
     </Engine>
   </Service>
-  <!-- from config-map 2-->
+  <!-- from config-map-->
 </Server>
