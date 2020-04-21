@@ -6,5 +6,5 @@ set -x
 
 kubectl get svc $SVC_NAME -n $NS_NAME -w
 
-kubectl get svc $SVC_NAME -n $NS_NAME --no-headers | awk '{print $4}' | xargs -I {} sh -c 'echo https://{}/; curl --insecure https://{}/'
+kubectl get svc $SVC_NAME -n $NS_NAME --no-headers | awk '{print $4}' | xargs -I {} sh -c 'echo https://{}/; curl --insecure https://{}/index.html'
 
