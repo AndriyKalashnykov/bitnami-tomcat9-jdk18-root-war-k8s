@@ -11,3 +11,5 @@ export TOMCAT_USERNAME=admin
 export TOMCAT_PASSWORD=admin
 export TOMCAT_PORT=8080
 export WAIT_TIMEOUT=60
+
+export K8S_DIR=../k8s

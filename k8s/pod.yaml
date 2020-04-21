@@ -5,52 +5,29 @@ metadata:
     app: web
   name: web
 spec:
-  initContainers:
-    - name: copy-cm-to-conf
-      image: busybox:1.31.1
-      imagePullPolicy: IfNotPresent
-      command: ["/bin/sh", "-c", "cp /bitnami/tomcat/conf/* /tmp/conf/"]
-      volumeMounts:
-        - name: tmp-conf
-          mountPath: /tmp/conf/          
-        - name: tomcat-conf-volume 
-          mountPath: /bitnami/tomcat/conf      
   containers:
     - name: web
-      image: andriykalashnykov/tomcat9-root-war:1.0
+      image: andriykalashnykov/bitnami-tomcat9-jdk18-root-war:latest
       imagePullPolicy: Always
       env:
         - name: JAVA_OPTS
           value: "-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addressess=true -Dfile.encoding=UTF-8 -Djava.awt.headless=true -XX:+UseG1GC -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MinRAMPercentage=50.0 -XX:MaxRAMPercentage=90.0"
-        - name: TOMCAT_USERNAME
-          value: "admin"
-        - name: TOMCAT_PASSWORD
-          value: "admin"
-        - name : TOMCAT_AJP_PORT_NUMBER
-          value: "8019"    
-        - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT
-          value: "1"
-        - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT_ANY_IP
-          value: "1"  
       readinessProbe:
         httpGet:
-          scheme: HTTP
-          path: / 
-          port: http-8080
-        initialDelaySeconds: 20
-        periodSeconds: 5 
-        successThreshold: 1 
-        failureThreshold: 20
-        timeoutSeconds: 2
+          scheme: HTTPS
+          path: /index.html
+          port: https-8443  
+        initialDelaySeconds: 5
+        timeoutSeconds: 5
+        periodSeconds: 5
       livenessProbe:
-          httpGet:
-            scheme: HTTP
-            path: /
-            port: http-8080
-          initialDelaySeconds: 30
-          periodSeconds: 30
-          timeoutSeconds: 5
-          failureThreshold: 20
+        tcpSocket:
+          port: https-8443
+        initialDelaySeconds: 10
+        periodSeconds: 30
+        timeoutSeconds: 5
+        failureThreshold: 1
+        successThreshold: 1
       ports:   
       - name: http-8080
         containerPort: 8080
@@ -64,23 +41,13 @@ spec:
           memory: "256Mi"
           cpu: "750m"
       volumeMounts:
-        - name: data
-          mountPath: /bitnami/tomcat
-        - name: tmp-conf
-          mountPath: /tmp/conf/  
-      securityContext:
-        privileged: true
+        - name: tomcat-conf-volume 
+          mountPath: /cm/conf 
       lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "cp /tmp/conf/* /opt/bitnami/tomcat/conf"]
-  imagePullSecrets:
-  - name: registry-secret
+              command: ["/bin/sh", "-c", "cp /cm/conf/* /opt/bitnami/tomcat/conf"]
   volumes:
-    - name: data
-      emptyDir: {}
-    - name: tmp-conf
-      emptyDir: {}  
     - name: tomcat-conf-volume
       configMap:
         name: tomcat-conf-cm
