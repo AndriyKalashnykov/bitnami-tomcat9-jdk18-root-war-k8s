@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-bitnami-tomcat9-jdk18-root-war
+spec:
+  selector:
+    app: bitnami-tomcat9-jdk18-root-war
+  ports:
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 8443 
+  type: LoadBalancer

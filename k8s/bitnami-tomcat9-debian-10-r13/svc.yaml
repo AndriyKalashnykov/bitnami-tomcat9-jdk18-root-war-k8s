@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: web-service
+  name: svc-bitnami-tomcat9-debian-10-r13
 spec:
   selector:
-    app: web
+    app: bitnami-tomcat9-debian-10-r13
   ports:
   - name: https
     protocol: TCP

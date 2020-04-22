@@ -2,11 +2,11 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: web
-  name: web
+    app: bitnami-tomcat9-jdk18-root-war
+  name: bitnami-tomcat9-jdk18-root-war
 spec:
   containers:
-    - name: web
+    - name: bitnami-tomcat9-jdk18-root-war
       image: andriykalashnykov/bitnami-tomcat9-jdk18-root-war:latest
       imagePullPolicy: Always
       env:

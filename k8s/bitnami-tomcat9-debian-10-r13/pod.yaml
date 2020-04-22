@@ -2,13 +2,12 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: tomcat-bitnami-original
-  name: tomcat-bitnami-original
+    app: bitnami-tomcat9-debian-10-r13
+  name: bitnami-tomcat9-debian-10-r13
 spec:  
   containers:
-    - name: tomcat-bitnami-original
-      # image: docker.io/bitnami/tomcat:9.0-debian-10
-      image: docker.io/andriykalashnykov/bitnami-tomcat9-jdk18:1.0
+    - name: bitnami-tomcat9-debian-10-r13
+      image: docker.io/bitnami/tomcat:9.0-debian-10-r13
       imagePullPolicy: Always
       env:
         - name: JAVA_OPTS
