@@ -67,7 +67,7 @@ cd scripts
 
 ---
 
-I've customized Bitami docker image a bit to incorporate few changes: [bitnami-tomcat9-jdk18](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18)
+I've customized Bitami docker image a bit to incorporate missing requiremets and few enhancement: [bitnami-tomcat9-jdk18](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18)
 
 and created another image to demonstrate how deploy WAR file as ROOT "/" context [bitnami-tomcat9-jdk18-root-war](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18-root-war)
 
