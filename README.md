@@ -2,13 +2,16 @@
 
 # Deploy Customized Bitnami Tomcat Docker Image + ROOT.war + Tomcat 9 on Kubernetes
 
-Deploy Java Web Appplication:
- - Tomcat 9
- - Use HTTP/2 adapter for protocol upgrade - requires Apache APR
- - JDK 1.8
- - deploy WAR at a root "/" context
+Requiremets for Web Java Application:
+ - Tomcat 9 (+)
+ - HTTP/2 adapter for protocol upgrade - requires Apache APR (+)
+ - JDK 1.8 (-)
+ - WAR deployed as a root "/" context (-)
   
-### Create namespace
+
+### Deploy bitnami-tomcat9-debian-10-r13
+
+#### Create namespace
 
 ```shell
 cd scripts
@@ -16,15 +19,13 @@ cd scripts
 kubectl create ns $NS_NAME
 ```
 
-### Create PVC
+#### Create PVC
 
 ```shell
 cd scripts
 . ./set-evn.sh
 kubectl create -f $K8S_DIR/pvc.yaml -n $NS_NAME
 ```
-
-### Deploy bitnami-tomcat9-debian-10-r13
 
 GitHub repo: [bitnami-docker-tomcat](https://github.com/bitnami/bitnami-docker-tomcat)
 
