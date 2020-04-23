@@ -11,6 +11,11 @@ Requiremets for Web Java Application:
 
 ### Deploy bitnami-tomcat9-debian-10-r13
 
+GitHub repo: [bitnami-docker-tomcat](https://github.com/bitnami/bitnami-docker-tomcat)
+
+DockerHub image: [bitnami/tomcat:9.0.34-debian-10-r13](https://hub.docker.com/layers/bitnami/tomcat/9.0.34-debian-10-r13/images/sha256-0cf36570af15c6b4224fdc3c66ee5b42bfcf1a670dd3823ecf9173b389b3288b?context=explore)
+
+
 #### Create namespace
 
 ```shell
@@ -26,10 +31,6 @@ cd scripts
 . ./set-evn.sh
 kubectl create -f $K8S_DIR/pvc.yaml -n $NS_NAME
 ```
-
-GitHub repo: [bitnami-docker-tomcat](https://github.com/bitnami/bitnami-docker-tomcat)
-
-DockerHub image: [bitnami/tomcat:9.0.34-debian-10-r13](https://hub.docker.com/layers/bitnami/tomcat/9.0.34-debian-10-r13/images/sha256-0cf36570af15c6b4224fdc3c66ee5b42bfcf1a670dd3823ecf9173b389b3288b?context=explore)
 
 ```shell
 cd scripts
