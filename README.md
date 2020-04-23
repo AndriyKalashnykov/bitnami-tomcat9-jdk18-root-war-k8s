@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/hexpm/l/plug.svg?maxAge=2592000)]()
 
-# Customized Bitnami Tomcat 9 + ROOT.war on Kubernetes
+# Customized Bitnami Tomcat 9 on Kubernetes
 
 Requiremets for Web Java Application:
  - Tomcat 9 (+)
