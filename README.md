@@ -81,7 +81,6 @@ cd scripts
 ./deploy.sh bitnami-tomcat9-jdk18-root-war
 ```
 
-
 ### Test bitnami-tomcat9-jdk18-root-war
 
 ```shell
