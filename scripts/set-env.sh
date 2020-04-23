@@ -2,7 +2,7 @@
 
 set +x
 
-export NS_NAME=scdc1-staging-solution-builder
+export NS=scdc1-staging-solution-builder
 export IMAGE_NAME=bitnami-tomcat9-jdk18-root-war
 export IMAGE_VERSION=1.0
 export POD_NAME=bitnami-tomcat9-jdk18-root-war

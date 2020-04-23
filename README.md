@@ -19,7 +19,7 @@ DockerHub image: [bitnami/tomcat:9.0.34-debian-10-r13](https://hub.docker.com/la
 ```shell
 cd scripts
 . ./set-evn.sh
-kubectl create ns $NS_NAME
+kubectl create ns $NS
 ```
 
 #### Create PVC
@@ -27,8 +27,11 @@ kubectl create ns $NS_NAME
 ```shell
 cd scripts
 . ./set-evn.sh
-kubectl create -f $K8S_DIR/pvc.yaml -n $NS_NAME
+kubectl create -f $K8S_DIR/pvc.yaml -n $NS
 ```
+
+[k8s bitnami-tomcat9-debian-10-r13](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/k8s/bitnami-tomcat9-debian-10-r13)
+[deployment scripts]
 
 ```shell
 cd scripts
@@ -50,6 +53,7 @@ cd scripts
 
 $ curl http://localhost:8080/
 $ curl -u admin:admin http://localhost:8080/host-manager/text/list
+$ exit
 ```
 
 ### Deploy hello-world-webapp via Tomcat UI
@@ -68,6 +72,9 @@ cd scripts
 I've customized Bitami docker image a bit to incorporate missing requiremets and few enhancement: [bitnami-tomcat9-jdk18](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18)
 
 and created another image to demonstrate how deploy WAR file as ROOT "/" context [bitnami-tomcat9-jdk18-root-war](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18-root-war)
+
+[bitnami-tomcat9-jdk18-root-war](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/k8s/bitnami-tomcat9-jdk18-root-war)
+[deployment scripts]
 
 ### Deploy bitnami-tomcat9-jdk18-root-war
 
@@ -94,6 +101,7 @@ $ curl -k https://localhost:8443/index.html
 $ curl -k -u admin:admin https://localhost:8443/manager/status/all?XML=true
 $ netstat -a | egrep 'Proto|LISTEN'
 $ lsof -i -P 2>/dev/null
+$ exit
 ```
 
 ### Uneploy bitnami-tomcat9-jdk18-root-war
@@ -102,3 +110,5 @@ $ lsof -i -P 2>/dev/null
 cd scripts
 ./undeploy.sh bitnami-tomcat9-jdk18-root-war
 ```
+
+[deployment scripts]: https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/scripts

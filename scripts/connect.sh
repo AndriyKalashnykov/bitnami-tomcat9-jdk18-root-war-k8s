@@ -4,5 +4,5 @@
 
 if [ ! -z "$1" ]
 then
-    kubectl exec -it $1 -n $NS_NAME /bin/bash
+    kubectl exec -it $1 -n $NS /bin/bash
 fi
