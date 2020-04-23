@@ -8,10 +8,10 @@ spec:
   volumes:
     - name: bitnami-tomcat-storage
       persistentVolumeClaim:
-        claimName: bitnami-tomcat-claim  
+        claimName: bitnami-tomcat-claim
     - name: tomcat-conf-volume
       configMap:
-        name: tomcat-conf-cm     
+        name: tomcat-conf-cm
   containers:
     - name: bitnami-tomcat9-debian-10-r13
       image: docker.io/bitnami/tomcat:9.0.34-debian-10-r13
@@ -22,7 +22,7 @@ spec:
         - name: TOMCAT_USERNAME
           value: "admin"
         - name: TOMCAT_PASSWORD
-          value: "admin"  
+          value: "admin"
         - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT
           value: "1"
       readinessProbe:
@@ -39,7 +39,7 @@ spec:
         timeoutSeconds: 5
         failureThreshold: 1
         successThreshold: 1
-      ports:   
+      ports:
       - name: http-8080
         containerPort: 8080
       resources:
@@ -57,5 +57,4 @@ spec:
       lifecycle:
           postStart:
             exec:
-              command: ["/bin/sh", "-c", "cp /cm/conf/* /opt/bitnami/tomcat/conf"]    
- 
+              command: ["/bin/sh", "-c", "cp /cm/conf/* /opt/bitnami/tomcat/conf"]

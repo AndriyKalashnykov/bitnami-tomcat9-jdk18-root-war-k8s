@@ -6,10 +6,6 @@ spec:
   selector:
     app: bitnami-tomcat9-jdk18-root-war
   ports:
-  - name: http
-    protocol: TCP
-    port: 80
-    targetPort: 8080     
   - name: https
     protocol: TCP
     port: 443

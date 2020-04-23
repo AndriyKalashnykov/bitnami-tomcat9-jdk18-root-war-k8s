@@ -2,4 +2,6 @@
 
 . ./set-env.sh
 
-kubectl get all -n $NS_NAME
+kubectl get pod -w -n $NS_NAME
+
+kubectl get svc -w -n $NS_NAME
