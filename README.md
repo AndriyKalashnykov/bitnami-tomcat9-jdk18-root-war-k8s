@@ -30,14 +30,9 @@ kubectl create -f $K8S_DIR/pvc.yaml -n $NS_NAME
 
 [bitnami/tomcat:9.0.34-debian-10-r13](https://hub.docker.com/layers/bitnami/tomcat/9.0.34-debian-10-r13/images/sha256-0cf36570af15c6b4224fdc3c66ee5b42bfcf1a670dd3823ecf9173b389b3288b?context=explore)
 
-I've customized Bitami docker image a bit to incorporate few changes:
+I've customized Bitami docker image a bit to incorporate few changes: [bitnami-tomcat9-jdk18](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18)
 
-[bitnami-tomcat9-jdk18](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18)
-
-and then created another docker image to demonstrate how deploy WAR file as ROOT
-"/" context
-
-[bitnami-tomcat9-jdk18-root-war](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18-root-war)
+and created another image to demonstrate how deploy WAR file as ROOT "/" context [bitnami-tomcat9-jdk18-root-war](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18-root-war)
 
 ```shell
 cd scripts
