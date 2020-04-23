@@ -4,11 +4,18 @@ metadata:
   labels:
     app: bitnami-tomcat9-debian-10-r13
   name: bitnami-tomcat9-debian-10-r13
-spec:  
+spec:
+  volumes:
+    - name: bitnami-tomcat-storage
+      persistentVolumeClaim:
+        claimName: bitnami-tomcat-claim  
+    - name: tomcat-conf-volume
+      configMap:
+        name: tomcat-conf-cm     
   containers:
     - name: bitnami-tomcat9-debian-10-r13
-      image: docker.io/bitnami/tomcat:9.0-debian-10-r13
-      imagePullPolicy: Always
+      image: docker.io/bitnami/tomcat:9.0.34-debian-10-r13
+      imagePullPolicy: IfNotPresent
       env:
         - name: JAVA_OPTS
           value: "-Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addressess=true -Dfile.encoding=UTF-8 -Djava.awt.headless=true -XX:+UseG1GC -XX:MinRAMPercentage=50.0 -XX:MaxRAMPercentage=90.0"
@@ -18,8 +25,6 @@ spec:
           value: "admin"  
         - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT
           value: "1"
-        - name: TOMCAT_ALLOW_REMOTE_MANAGEMENT_ANY_IP
-          value: "1"  
       readinessProbe:
         tcpSocket:
           port: http-8080
@@ -44,4 +49,13 @@ spec:
         limits:
           memory: "256Mi"
           cpu: "750m"
+      volumeMounts:
+        - name: bitnami-tomcat-storage
+          mountPath: "/bitnami-tomcat-storage"
+        - name: tomcat-conf-volume
+          mountPath: /cm/conf
+      lifecycle:
+          postStart:
+            exec:
+              command: ["/bin/sh", "-c", "cp /cm/conf/* /opt/bitnami/tomcat/conf"]    
  
