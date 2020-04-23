@@ -29,9 +29,9 @@ cd scripts
 . ./set-evn.sh
 kubectl create -f $K8S_DIR/pvc.yaml -n $NS
 ```
-
-[k8s bitnami-tomcat9-debian-10-r13](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/k8s/bitnami-tomcat9-debian-10-r13)
-[deployment scripts]
+Source code
+* [k8s bitnami-tomcat9-debian-10-r13](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/k8s/bitnami-tomcat9-debian-10-r13)
+* [deployment scripts]
 
 ```shell
 cd scripts
@@ -73,8 +73,9 @@ I've customized Bitami docker image a bit to incorporate missing requiremets and
 
 and created another image to demonstrate how deploy WAR file as ROOT "/" context [bitnami-tomcat9-jdk18-root-war](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18-root-war)
 
-[bitnami-tomcat9-jdk18-root-war](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/k8s/bitnami-tomcat9-jdk18-root-war)
-[deployment scripts]
+Source code
+* [bitnami-tomcat9-jdk18-root-war](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/k8s/bitnami-tomcat9-jdk18-root-war)
+* [deployment scripts]
 
 ### Deploy bitnami-tomcat9-jdk18-root-war
 
