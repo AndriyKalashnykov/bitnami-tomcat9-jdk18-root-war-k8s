@@ -17,7 +17,7 @@ DockerHub image: [bitnami/tomcat:9.0.34-debian-10-r13](https://hub.docker.com/la
 
 #### Create namespace
 
-```shell
+```bash
 cd scripts
 . ./set-evn.sh
 kubectl create ns $NS
@@ -25,7 +25,7 @@ kubectl create ns $NS
 
 #### Create PVC
 
-```shell
+```bash
 cd scripts
 . ./set-evn.sh
 kubectl create -f $K8S_DIR/pvc.yaml -n $NS
@@ -34,27 +34,26 @@ Source code
 * [k8s bitnami-tomcat9-debian-10-r13](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/k8s/bitnami-tomcat9-debian-10-r13)
 * [deployment scripts]
 
-```shell
+```bash
 cd scripts
 ./deploy.sh bitnami-tomcat9-debian-10-r13
 ```
 
 ### Test bitnami-tomcat9-debian-10-r13
 
-```shell
+```bash
 cd scripts
 ./test.sh bitnami-tomcat9-debian-10-r13
 ```
 
 ### Get a shell to the running Container bitnami-tomcat9-debian-10-r13
 
-```shell
+```bash
 cd scripts
 ./connect.sh bitnami-tomcat9-debian-10-r13
 
 $ curl http://localhost:8080/
 $ curl -u admin:admin http://localhost:8080/host-manager/text/list
-$ exit
 ```
 
 ### Deploy hello-world-webapp via Tomcat UI
@@ -63,7 +62,7 @@ Upload ../apps/hellow-world-webapp.war
 
 ### UnDeploy bitnami-tomcat9-debian-10-r13
 
-```shell
+```bash
 cd scripts
 ./undeploy.sh bitnami-tomcat9-debian-10-r13
 ```
@@ -81,21 +80,21 @@ and created another image to demonstrate how deploy WAR file as ROOT "/" context
 
 ### Deploy andriykalashnykov/bitnami-tomcat9-jdk18-root-war
 
-```shell
+```bash
 cd scripts
 ./deploy.sh bitnami-tomcat9-jdk18-root-war
 ```
 
 ### Test andriykalashnykov/bitnami-tomcat9-jdk18-root-war
 
-```shell
+```bash
 cd scripts
 ./test.sh bitnami-tomcat9-jdk18-root-war
 ```
 
 ### Get a shell to the running Container andriykalashnykov/bitnami-tomcat9-jdk18-root-war
 
-```shell
+```bash
 cd scripts
 ./connect.sh bitnami-tomcat9-jdk18-root-war
 
@@ -104,12 +103,11 @@ $ curl -k https://localhost:8443/index.html
 $ curl -k -u admin:admin https://localhost:8443/manager/status/all?XML=true
 $ netstat -a | egrep 'Proto|LISTEN'
 $ lsof -i -P 2>/dev/null
-$ exit
 ```
 
 ### Uneploy andriykalashnykov/bitnami-tomcat9-jdk18-root-war
 
-```shell
+```bash
 cd scripts
 ./undeploy.sh bitnami-tomcat9-jdk18-root-war
 ```
