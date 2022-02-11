@@ -2,8 +2,8 @@
 # Deploying Bitnami Tomcat 9 on Kubernetes
 
 Requiremets for Web Java Application:
- - Tomcat 9 [x]
- - HTTP/2 adapter for protocol upgrade - requires Apache APR [x]
+ - Tomcat 9 :white_check_mark:
+ - HTTP/2 adapter for protocol upgrade - requires Apache APR :white_check_mark:
  - JDK 1.8 :x:
  - WAR deployed as a root "/" :x:
   
