@@ -72,7 +72,6 @@ cd scripts
 
 I've customized Bitami docker image `bitnami-tomcat9-jdk18` a bit to incorporate missing requiremets and few enhancement: [andriykalashnykov/bitnami-tomcat9-jdk18](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18)
 
-Customized  andriykalashnykov/bitnami-tomcat9-jdk18 image:
  - Tomcat 9 :white_check_mark:
  - HTTP/2 adapter for protocol upgrade - requires Apache APR :white_check_mark:
  - JDK 1.8 :white_check_mark:
