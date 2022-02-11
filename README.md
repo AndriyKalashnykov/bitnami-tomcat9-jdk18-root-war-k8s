@@ -30,9 +30,8 @@ cd scripts
 . ./set-evn.sh
 kubectl create -f $K8S_DIR/pvc.yaml -n $NS
 ```
-Source code
-* [k8s bitnami-tomcat9-debian-10-r13](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/k8s/bitnami-tomcat9-debian-10-r13)
-* [deployment scripts]
+
+### Deploy bitnami-tomcat9-debian-10-r13
 
 ```bash
 cd scripts
@@ -46,7 +45,7 @@ cd scripts
 ./test.sh bitnami-tomcat9-debian-10-r13
 ```
 
-### Get a shell to the running Container bitnami-tomcat9-debian-10-r13
+### Get a shell to the running container
 
 ```bash
 cd scripts
@@ -58,7 +57,7 @@ $ curl -u admin:admin http://localhost:8080/host-manager/text/list
 
 ### Deploy hello-world-webapp via Tomcat UI
 
-Upload ../apps/hellow-world-webapp.war
+Upload []../apps/hellow-world-webapp.war](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/blob/cb70dfb18ea69ee66177326d090e5eed461dc0aa/apps/hellow-world-webapp.war) from Web UI
 
 ### UnDeploy bitnami-tomcat9-debian-10-r13
 
