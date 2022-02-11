@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # Deploying Bitnami Tomcat 9 on Kubernetes
 
-Requiremets for Web Java Application:
+Default bitnami-tomcat9-debian-10-r13 image:
  - Tomcat 9 :white_check_mark:
  - HTTP/2 adapter for protocol upgrade - requires Apache APR :white_check_mark:
  - JDK 1.8 :x:
@@ -68,31 +68,33 @@ cd scripts
 ./undeploy.sh bitnami-tomcat9-debian-10-r13
 ```
 
----
+## Customized  andriykalashnykov/bitnami-tomcat9-jdk18 image:
 
-I've customized Bitami docker image a bit to incorporate missing requiremets and few enhancement: [bitnami-tomcat9-jdk18](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18)
+I've customized Bitami docker image `bitnami-tomcat9-jdk18` a bit to incorporate missing requiremets and few enhancement: [andriykalashnykov/bitnami-tomcat9-jdk18](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18)
 
-and created another image to demonstrate how deploy WAR file as ROOT "/" context [bitnami-tomcat9-jdk18-root-war](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18-root-war)
+Customized  andriykalashnykov/bitnami-tomcat9-jdk18 image:
+ - Tomcat 9 :white_check_mark:
+ - HTTP/2 adapter for protocol upgrade - requires Apache APR :white_check_mark:
+ - JDK 1.8 :white_check_mark:
+ - WAR deployed as a root "/" :white_check_mark:
 
-Source code
-* [bitnami-tomcat9-jdk18-root-war](https://github.com/AndriyKalashnykov/bitnami-tomcat9-jdk18-root-war-k8s/tree/master/k8s/bitnami-tomcat9-jdk18-root-war)
-* [deployment scripts]
+and created another image to demonstrate how deploy WAR file as ROOT "/" context [andriykalashnykov/bitnami-tomcat9-jdk18-root-war](https://hub.docker.com/r/andriykalashnykov/bitnami-tomcat9-jdk18-root-war)
 
-### Deploy bitnami-tomcat9-jdk18-root-war
+### Deploy andriykalashnykov/bitnami-tomcat9-jdk18-root-war
 
 ```shell
 cd scripts
 ./deploy.sh bitnami-tomcat9-jdk18-root-war
 ```
 
-### Test bitnami-tomcat9-jdk18-root-war
+### Test andriykalashnykov/bitnami-tomcat9-jdk18-root-war
 
 ```shell
 cd scripts
 ./test.sh bitnami-tomcat9-jdk18-root-war
 ```
 
-### Get a shell to the running Container bitnami-tomcat9-jdk18-root-war
+### Get a shell to the running Container andriykalashnykov/bitnami-tomcat9-jdk18-root-war
 
 ```shell
 cd scripts
@@ -106,7 +108,7 @@ $ lsof -i -P 2>/dev/null
 $ exit
 ```
 
-### Uneploy bitnami-tomcat9-jdk18-root-war
+### Uneploy andriykalashnykov/bitnami-tomcat9-jdk18-root-war
 
 ```shell
 cd scripts
