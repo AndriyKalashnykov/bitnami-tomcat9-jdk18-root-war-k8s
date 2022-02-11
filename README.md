@@ -4,8 +4,8 @@
 Requiremets for Web Java Application:
  - Tomcat 9 [x]
  - HTTP/2 adapter for protocol upgrade - requires Apache APR [x]
- - JDK 1.8 [ ]
- - WAR deployed as a root "/" context [ ]
+ - JDK 1.8 :white_large_square:
+ - WAR deployed as a root "/" :white_large_square:
   
 
 ### Deploy bitnami-tomcat9-debian-10-r13
