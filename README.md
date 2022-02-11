@@ -1,10 +1,11 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # Deploying Bitnami Tomcat 9 on Kubernetes
 
 Requiremets for Web Java Application:
- - Tomcat 9 (+)
- - HTTP/2 adapter for protocol upgrade - requires Apache APR (+)
- - JDK 1.8 (-)
- - WAR deployed as a root "/" context (-)
+ - Tomcat 9 [x]
+ - HTTP/2 adapter for protocol upgrade - requires Apache APR [x]
+ - JDK 1.8 [ ]
+ - WAR deployed as a root "/" context [ ]
   
 
 ### Deploy bitnami-tomcat9-debian-10-r13
